@@ -1,4 +1,436 @@
-[00:00:00.718] Server  LOG     ✓ Ready in 457ms
-[00:08:14.615] Server  LOG     ✓ Compiled in 262ms
-[00:08:33.810] Server  LOG     ✓ Compiled in 189ms
-[00:22:50.210] Server  LOG     ✓ Compiled in 126ms
+[00:00:00.967] Server  LOG     ✓ Ready in 748ms
+[00:00:18.171] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:20.407] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:44.310] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:03:54.069] Server  LOG     ✓ Compiled in 30ms
+[00:03:58.384] Server  LOG     ✓ Compiled in 22ms
+[00:04:08.532] Server  LOG     ✓ Compiled in 27ms
+[00:05:26.952] Server  LOG     ✓ Compiled in 37ms
+[00:05:30.094] Server  LOG     ✓ Compiled in 15ms
+[00:05:33.817] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:05:35.942] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:05:43.386] Server  LOG     ✓ Compiled in 41ms
+[00:05:44.762] Server  LOG     ✓ Compiled in 22ms
+[00:05:51.514] Server  LOG     ✓ Compiled in 14ms
+[00:05:55.925] Server  LOG     ✓ Compiled in 20ms
+[00:06:44.290] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:08:00.474] Server  LOG     ✓ Compiled in 59ms
+[00:08:46.205] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:09:16.791] Server  LOG     ✓ Compiled in 87ms
+[00:09:18.123] Server  LOG     ✓ Compiled in 53ms
+[00:09:30.236] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `HomePage`.
+[00:09:31.852] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:09:34.560] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:09:44.146] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:03.271] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `HomePage`.
+[00:10:04.195] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:10:04.793] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:13.860] Server  LOG     ✓ Compiled in 43ms
+[00:10:13.980] Browser ERROR   ./components/home/Hero.tsx:95:1
+Ecmascript file had an error
+  93 |   );
+  94 | }
+> 95 | "use client";
+     | ^^^^^^^^^^^^^
+  96 |
+  97 | import Link from "next/link";
+  98 | import { motion } from "framer-motion";
+
+The "use client" directive must be placed before other expressions. Move it to the top of the file to resolve this issue.
+
+Import trace:
+  Server Component:
+    ./components/home/Hero.tsx
+    ./app/page.tsx
+[00:10:13.980] Browser ERROR   ./components/home/Hero.tsx:100:25
+Ecmascript file had an error
+   98 | import { motion } from "framer-motion";
+   99 |
+> 100 | export default function Hero() {
+      |                         ^^^^
+  101 |   return (
+  102 |     <section className="relative w-full min-h-svh overflow-hidden">
+  103 |       {/* 🎥 BACKGROUND VIDEO */}
+
+the name `Hero` is defined multiple times
+
+Import trace:
+  Server Component:
+    ./components/home/Hero.tsx
+    ./app/page.tsx
+[00:10:13.980] Browser ERROR   ./components/home/Hero.tsx:97:8
+Ecmascript file had an error
+   95 | "use client";
+   96 |
+>  97 | import Link from "next/link";
+      |        ^^^^
+   98 | import { motion } from "framer-motion";
+   99 |
+  100 | export default function Hero() {
+
+the name `Link` is defined multiple times
+
+Import trace:
+  Server Component:
+    ./components/home/Hero.tsx
+    ./app/page.tsx
+[00:10:13.980] Browser ERROR   ./components/home/Hero.tsx:100:1
+Ecmascript file had an error
+   98 | import { motion } from "framer-motion";
+   99 |
+> 100 | export default function Hero() {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 101 |   return (
+      | ^^^^^^^^^^
+> 102 |     <section className="relative w-full min-h-svh overflow-hidden">
+      | ^^^^^^^^^^
+> 103 |       {/* 🎥 BACKGROUND VIDEO */}
+      | ^^^^^^^^^^
+> 104 |       <video
+      | ^^^^^^^^^^
+> 105 |         className="absolute inset-0 w-full h-full object-cover"
+      | ^^^^^^^^^^
+> 106 |         src="/hero-bg.mp4"
+      | ^^^^^^^^^^
+> 107 |         autoPlay
+      | ^^^^^^^^^^
+> 108 |         muted
+      | ^^^^^^^^^^
+> 109 |         playsInline
+      | ^^^^^^^^^^
+> 110 |         loop
+      | ^^^^^^^^^^
+> 111 |         style={{
+      | ^^^^^^^^^^
+> 112 |           objectPosition: "center",
+      | ^^^^^^^^^^
+> 113 |         }}
+      | ^^^^^^^^^^
+> 114 |       />
+      | ^^^^^^^^^^
+> 115 |
+      | ^^^^^^^^^^
+> 116 |       {/* 🌫️ OVERLAY */}
+      | ^^^^^^^^^^
+> 117 |       <div className="absolute inset-0 bg-black/40 sm:bg-black/25" />
+      | ^^^^^^^^^^
+> 118 |
+      | ^^^^^^^^^^
+> 119 |       {/* CONTENT */}
+      | ^^^^^^^^^^
+> 120 |       <div className="relative z-10 flex items-center min-h-svh px-4 sm:px-6">
+      | ^^^^^^^^^^
+> 121 |         <div
+      | ^^^^^^^^^^
+> 122 |           className="
+      | ^^^^^^^^^^
+> 123 |             max-w-6xl
+      | ^^^^^^^^^^
+> 124 |             w-full
+      | ^^^^^^^^^^
+> 125 |             mx-auto
+      | ^^^^^^^^^^
+> 126 |             text-center
+      | ^^^^^^^^^^
+> 127 |             sm:text-left
+      | ^^^^^^^^^^
+> 128 |             sm:pl-0
+      | ^^^^^^^^^^
+> 129 |             md:pl-16
+      | ^^^^^^^^^^
+> 130 |           "
+      | ^^^^^^^^^^
+> 131 |         >
+      | ^^^^^^^^^^
+> 132 |           {/* Headline */}
+      | ^^^^^^^^^^
+> 133 |           <motion.h1
+      | ^^^^^^^^^^
+> 134 |             initial={{ opacity: 0, y: 20 }}
+      | ^^^^^^^^^^
+> 135 |             animate={{ opacity: 1, y: 0 }}
+      | ^^^^^^^^^^
+> 136 |             transition={{ duration: 0.8, ease: "easeOut" }}
+      | ^^^^^^^^^^
+> 137 |             className="
+      | ^^^^^^^^^^
+> 138 |               text-2xl
+      | ^^^^^^^^^^
+> 139 |               sm:text-4xl
+      | ^^^^^^^^^^
+> 140 |               md:text-7xl
+      | ^^^^^^^^^^
+> 141 |               font-semibold
+      | ^^^^^^^^^^
+> 142 |               tracking-tight
+      | ^^^^^^^^^^
+> 143 |               leading-snug
+      | ^^^^^^^^^^
+> 144 |               sm:leading-[1.05]
+      | ^^^^^^^^^^
+> 145 |               text-white
+      | ^^^^^^^^^^
+> 146 |             "
+      | ^^^^^^^^^^
+> 147 |           >
+      | ^^^^^^^^^^
+> 148 |             We build AI-powered Products
+      | ^^^^^^^^^^
+> 149 |             <br className="hidden sm:block" />
+      | ^^^^^^^^^^
+> 150 |             and Programs.
+      | ^^^^^^^^^^
+> 151 |           </motion.h1>
+      | ^^^^^^^^^^
+> 152 |
+      | ^^^^^^^^^^
+> 153 |           {/* Subheadline */}
+      | ^^^^^^^^^^
+> 154 |           <motion.p
+      | ^^^^^^^^^^
+> 155 |             initial={{ opacity: 0, y: 20 }}
+      | ^^^^^^^^^^
+> 156 |             animate={{ opacity: 1, y: 0 }}
+      | ^^^^^^^^^^
+> 157 |             transition={{ delay: 0.15, duration: 0.8, ease: "easeOut" }}
+      | ^^^^^^^^^^
+> 158 |             className="
+      | ^^^^^^^^^^
+> 159 |               mt-4
+      | ^^^^^^^^^^
+> 160 |               sm:mt-8
+      | ^^^^^^^^^^
+> 161 |               text-sm
+      | ^^^^^^^^^^
+> 162 |               sm:text-lg
+      | ^^^^^^^^^^
+> 163 |               md:text-xl
+      | ^^^^^^^^^^
+> 164 |               text-white/90
+      | ^^^^^^^^^^
+> 165 |               max-w-xl
+      | ^^^^^^^^^^
+> 166 |               mx-auto
+      | ^^^^^^^^^^
+> 167 |               sm:mx-0
+      | ^^^^^^^^^^
+> 168 |             "
+      | ^^^^^^^^^^
+> 169 |           >
+      | ^^^^^^^^^^
+> 170 |             Silicality helps startups, creators, and organizations
+      | ^^^^^^^^^^
+> 171 |             turn ideas into real-world impact.
+      | ^^^^^^^^^^
+> 172 |           </motion.p>
+      | ^^^^^^^^^^
+> 173 |
+      | ^^^^^^^^^^
+> 174 |           {/* CTA */}
+      | ^^^^^^^^^^
+> 175 |           <motion.div
+      | ^^^^^^^^^^
+> 176 |             initial={{ opacity: 0, y: 20 }}
+      | ^^^^^^^^^^
+> 177 |             animate={{ opacity: 1, y: 0 }}
+      | ^^^^^^^^^^
+> 178 |             transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+      | ^^^^^^^^^^
+> 179 |             className="
+      | ^^^^^^^^^^
+> 180 |               mt-6
+      | ^^^^^^^^^^
+> 181 |               sm:mt-12
+      | ^^^^^^^^^^
+> 182 |               flex
+      | ^^^^^^^^^^
+> 183 |               flex-col
+      | ^^^^^^^^^^
+> 184 |               sm:flex-row
+      | ^^^^^^^^^^
+> 185 |               gap-3
+      | ^^^^^^^^^^
+> 186 |               sm:gap-4
+      | ^^^^^^^^^^
+> 187 |               items-center
+      | ^^^^^^^^^^
+> 188 |               sm:items-start
+      | ^^^^^^^^^^
+> 189 |             "
+      | ^^^^^^^^^^
+> 190 |           >
+      | ^^^^^^^^^^
+> 191 |             <Link
+      | ^^^^^^^^^^
+> 192 |               href="/contact"
+      | ^^^^^^^^^^
+> 193 |               className="
+      | ^^^^^^^^^^
+> 194 |                 w-full
+      | ^^^^^^^^^^
+> 195 |                 sm:w-auto
+      | ^^^^^^^^^^
+> 196 |                 px-6
+      | ^^^^^^^^^^
+> 197 |                 py-3
+      | ^^^^^^^^^^
+> 198 |                 rounded-xl
+      | ^^^^^^^^^^
+> 199 |                 bg-white
+      | ^^^^^^^^^^
+> 200 |                 text-black
+      | ^^^^^^^^^^
+> 201 |                 font-medium
+      | ^^^^^^^^^^
+> 202 |                 text-center
+      | ^^^^^^^^^^
+> 203 |                 hover:bg-neutral-200
+      | ^^^^^^^^^^
+> 204 |                 transition
+      | ^^^^^^^^^^
+> 205 |               "
+      | ^^^^^^^^^^
+> 206 |             >
+      | ^^^^^^^^^^
+> 207 |               Start a Project
+      | ^^^^^^^^^^
+> 208 |             </Link>
+      | ^^^^^^^^^^
+> 209 |
+      | ^^^^^^^^^^
+> 210 |             <Link
+      | ^^^^^^^^^^
+> 211 |               href="/programs"
+      | ^^^^^^^^^^
+> 212 |               className="
+      | ^^^^^^^^^^
+> 213 |                 w-full
+      | ^^^^^^^^^^
+> 214 |                 sm:w-auto
+      | ^^^^^^^^^^
+> 215 |                 px-6
+      | ^^^^^^^^^^
+> 216 |                 py-3
+      | ^^^^^^^^^^
+> 217 |                 rounded-xl
+      | ^^^^^^^^^^
+> 218 |                 border
+      | ^^^^^^^^^^
+> 219 |                 border-white/30
+      | ^^^^^^^^^^
+> 220 |                 text-white
+      | ^^^^^^^^^^
+> 221 |                 text-center
+      | ^^^^^^^^^^
+> 222 |                 hover:border-white
+      | ^^^^^^^^^^
+> 223 |                 transition
+      | ^^^^^^^^^^
+> 224 |               "
+      | ^^^^^^^^^^
+> 225 |             >
+      | ^^^^^^^^^^
+> 226 |               Explore Programs
+      | ^^^^^^^^^^
+> 227 |             </Link>
+      | ^^^^^^^^^^
+> 228 |           </motion.div>
+      | ^^^^^^^^^^
+> 229 |         </div>
+      | ^^^^^^^^^^
+> 230 |       </div>
+      | ^^^^^^^^^^
+> 231 |     </section>
+      | ^^^^^^^^^^
+> 232 |   );
+      | ^^^^^^^^^^
+> 233 | }
+      | ^^
+  234 |
+
+the name `default` is exported multiple times
+
+Import trace:
+  Server Component:
+    ./components/home/Hero.tsx
+    ./app/page.tsx
+[00:10:13.980] Browser ERROR   ./components/home/Hero.tsx:98:10
+Ecmascript file had an error
+   96 |
+   97 | import Link from "next/link";
+>  98 | import { motion } from "framer-motion";
+      |          ^^^^^^
+   99 |
+  100 | export default function Hero() {
+  101 |   return (
+
+the name `motion` is defined multiple times
+
+Import trace:
+  Server Component:
+    ./components/home/Hero.tsx
+    ./app/page.tsx
+[00:11:12.185] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:11:50.233] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `HomePage`.
+[00:11:52.431] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:11:53.254] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="bg-black text-white antialiased"
+-                           data-new-gr-c-s-check-loaded="14.1270.0"
+-                           data-gr-ext-installed=""
+                          >
+                  ...
+
+[00:11:53.256] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:14:22.233] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object. You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.
+
+Check the render method of `HomePage`.
+[00:14:23.216] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:14:32.960] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:15:08.284] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:15:30.100] Server  LOG     ✓ Compiled in 161ms
+[00:15:32.057] Server  LOG     ✓ Compiled in 148ms
+[00:16:26.702] Server  LOG     ✓ Compiled in 246ms
+[00:16:29.362] Server  LOG     ✓ Compiled in 235ms
+[00:17:08.748] Server  LOG     ✓ Compiled in 219ms
+[00:17:10.342] Server  LOG     ✓ Compiled in 157ms
+[00:17:55.101] Server  LOG     ✓ Compiled in 218ms
+[00:17:59.640] Server  LOG     ✓ Compiled in 163ms
+[00:19:08.729] Server  LOG     ✓ Compiled in 37ms
+[00:24:23.106] Browser WARN    Image with src "/logo.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
