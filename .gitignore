@@ -40,7 +40,7 @@ Thumbs.db
 # ===============================
 # Media (DO NOT commit large files)
 # ===============================
-*.mp4
+
 *.mov
 *.avi
 *.mkv
