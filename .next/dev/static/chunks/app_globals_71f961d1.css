@@ -660,10 +660,6 @@
     margin-bottom: calc(var(--spacing) * 10);
   }
 
-  .mb-12 {
-    margin-bottom: calc(var(--spacing) * 12);
-  }
-
   .mb-20 {
     margin-bottom: calc(var(--spacing) * 20);
   }
@@ -744,6 +740,10 @@
     height: 220px;
   }
 
+  .h-\[500px\] {
+    height: 500px;
+  }
+
   .h-full {
     height: 100%;
   }
@@ -786,6 +786,10 @@
 
   .w-125 {
     width: calc(var(--spacing) * 125);
+  }
+
+  .w-\[500px\] {
+    width: 500px;
   }
 
   .w-full {
@@ -993,6 +997,12 @@
     --tw-space-y-reverse: 0;
     margin-block-start: calc(calc(var(--spacing) * 20) * var(--tw-space-y-reverse));
     margin-block-end: calc(calc(var(--spacing) * 20) * calc(1 - var(--tw-space-y-reverse)));
+  }
+
+  :where(.space-y-24 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 24) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 24) * calc(1 - var(--tw-space-y-reverse)));
   }
 
   :where(.space-y-28 > :not(:last-child)) {
@@ -2337,12 +2347,6 @@
   }
 
   @media (min-width: 40rem) {
-    .sm\:mb-20 {
-      margin-bottom: calc(var(--spacing) * 20);
-    }
-  }
-
-  @media (min-width: 40rem) {
     .sm\:block {
       display: block;
     }
@@ -2547,6 +2551,12 @@
   }
 
   @media (min-width: 40rem) {
+    .sm\:px-10 {
+      padding-inline: calc(var(--spacing) * 10);
+    }
+  }
+
+  @media (min-width: 40rem) {
     .sm\:px-12 {
       padding-inline: calc(var(--spacing) * 12);
     }
@@ -2684,28 +2694,6 @@
     .sm\:leading-\[1\.05\] {
       --tw-leading: 1.05;
       line-height: 1.05;
-    }
-  }
-
-  @media (min-width: 40rem) {
-    @media (hover: hover) {
-      .sm\:group-hover\:opacity-100:is(:where(.group):hover *) {
-        opacity: 1;
-      }
-    }
-  }
-
-  @media (min-width: 40rem) {
-    @media (hover: hover) {
-      .sm\:group-hover\:ring-white\/10:is(:where(.group):hover *) {
-        --tw-ring-color: #ffffff1a;
-      }
-
-      @supports (color: color-mix(in lab, red, red)) {
-        .sm\:group-hover\:ring-white\/10:is(:where(.group):hover *) {
-          --tw-ring-color: color-mix(in oklab, var(--color-white) 10%, transparent);
-        }
-      }
     }
   }
 
