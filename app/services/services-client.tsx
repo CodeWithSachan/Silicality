@@ -37,9 +37,17 @@ export default function ServicesClient() {
           animate="show"
           className="relative"
         >
-          <span className="absolute inset-0 flex items-center justify-center text-[26vw] sm:text-[18vw] font-bold text-white/5 select-none pointer-events-none">
-            SILICALITY
-          </span>
+<span
+  className="
+    absolute inset-0 flex items-center justify-center
+    font-bold text-white/5 select-none pointer-events-none
+    text-[clamp(4.5rem,16vw,18rem)]
+    whitespace-nowrap
+  "
+>
+  SILICALITY
+</span>
+
 
           <motion.h1
             variants={fadeUp}

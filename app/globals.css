@@ -60,11 +60,11 @@ body {
 /* =========================
    NEXT.JS DEV UI (HIDDEN)
 ========================= */
-[data-nextjs-dev-overlay],
+/* [data-nextjs-dev-overlay],
 [data-nextjs-toast],
 [data-nextjs-dev-tools] {
   display: none !important;
-}
+} */
 
 /* =========================
    FOOTER ENHANCEMENTS

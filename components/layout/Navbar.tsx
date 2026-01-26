@@ -15,7 +15,7 @@ export default function Navbar() {
     { label: "Services", href: "/services" },
     { label: "Programs", href: "/programs" },
     { label: "Mentorship", href: "/mentorship" },
-    { label: "Sponsors", href: "/Sponsors" },
+    { label: "Sponsors", href: "/sponsors" },
   ];
 
   return (
