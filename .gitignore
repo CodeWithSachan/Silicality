@@ -1,1 +1,54 @@
-node_modules
+# ===============================
+# Dependencies
+# ===============================
+node_modules/
+
+# ===============================
+# Next.js / Build output
+# ===============================
+.next/
+out/
+dist/
+
+# Turbopack / caches (important)
+.turbo/
+.cache/
+
+# ===============================
+# Environment variables
+# ===============================
+.env
+.env.*
+!.env.example
+
+# ===============================
+# Logs
+# ===============================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ===============================
+# OS / Editor
+# ===============================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===============================
+# Media (DO NOT commit large files)
+# ===============================
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.zip
+*.tar
+*.gz
+
+# ===============================
+# Misc
+# ===============================
+coverage/
