@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/ayushsachan/Silicality/app/contact/ContactClient.tsx"],"sourcesContent":["import type { Metadata } from \"next\";\nimport ContactClient from \"./ContactClient\";\n\nexport const metadata: Metadata = {\n  title: \"Contact & Work With Us | Silicality\",\n  description:\n    \"Start a project with Silicality. Get in touch for AI solutions, development services, partnerships, and collaborations.\",\n};\n\nexport default function ContactPage() {\n  return <ContactClient />;\n}\n"],"names":[],"mappings":";;;;;;;AACA;;;AAEO,MAAM,WAAqB;IAChC,OAAO;IACP,aACE;AACJ;AAEe,SAAS;IACtB,qBAAO,8OAAC,2IAAa;;;;;AACvB"}},
-    {"offset": {"line": 43, "column": 0}, "map": {"version":3,"sources":["file:///Users/ayushsachan/Silicality/app/contact/page.tsx"],"sourcesContent":["import type { Metadata } from \"next\";\nimport ContactClient from \"./ContactClient\";\n\nexport const metadata: Metadata = {\n  title: \"Contact & Work With Us\",\n  description:\n    \"Start a project with Silicality. Get in touch for AI solutions, development services, partnerships, and collaborations.\",\n};\n\nexport default function ContactPage() {\n  return <ContactClient />;\n}\n"],"names":[],"mappings":";;;;;;;AACA;;;AAEO,MAAM,WAAqB;IAChC,OAAO;IACP,aACE;AACJ;AAEe,SAAS;IACtB,qBAAO,8OAAC,2IAAa;;;;;AACvB"}}]
-}

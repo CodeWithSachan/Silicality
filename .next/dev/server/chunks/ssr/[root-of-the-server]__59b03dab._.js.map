@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 17, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
-    {"offset": {"line": 21, "column": 0}, "map": {"version":3,"sources":["file:///Users/ayushsachan/Silicality/app/services/page.tsx"],"sourcesContent":["import type { Metadata } from \"next\";\nimport ServicesClient from \"./ServicesClient\";\n\nexport const metadata: Metadata = {\n  title: \"AI, Web & App Development Services\",\n  description:\n    \"Explore Silicality’s AI solutions, web & app development, and design services built for startups, creators, and organizations.\",\n};\n\nexport default function ServicesPage() {\n  return <ServicesClient />;\n}\n"],"names":[],"mappings":";;;;;;;AACA;;;AAEO,MAAM,WAAqB;IAChC,OAAO;IACP,aACE;AACJ;AAEe,SAAS;IACtB,qBAAO,8OAAC,6IAAc;;;;;AACxB"}}]
-}
