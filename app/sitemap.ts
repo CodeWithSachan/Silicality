@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next";
 
-const lastModified = new Date("2026-01-01");
-
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+
   return [
     {
       url: "https://silicality.com",
