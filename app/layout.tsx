@@ -170,7 +170,7 @@ export default function RootLayout({
                 "jobTitle": "Founder",
                 "url": "https://silicality.com/about",
                 "sameAs": [
-                  "https://www.linkedin.com/in/ayush-sachan",
+                  "https://www.linkedin.com/in/ayushsachan20",
                   "https://www.instagram.com/thedeveloper.guy"
                 ]
               },
