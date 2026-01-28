@@ -187,6 +187,27 @@ export default function RootLayout({
             }),
           }}
         />
+        {/* Google Analytics */}
+<Script
+  src={`https://www.googletagmanager.com/gtag/js?id=G-D0XFNJGK17`}
+  strategy="afterInteractive"
+/>
+
+<Script
+  id="google-analytics"
+  strategy="afterInteractive"
+  dangerouslySetInnerHTML={{
+    __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-D0XFNJGK17', {
+        page_path: window.location.pathname,
+      });
+    `,
+  }}
+/>
+
       </head>
 
       <body className="bg-black text-white antialiased">
