@@ -34,7 +34,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/logo.png"
-              alt="Silicality logo"
+              alt=""
               width={120}
               height={120}
               priority

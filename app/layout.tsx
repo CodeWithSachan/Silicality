@@ -95,6 +95,11 @@ export const metadata: Metadata = {
   description:
     "Silicality is a contribution-first technology ecosystem where developers build real projects, learn AI & web technologies, and grow through programs, services, and mentorship.",
 
+      icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+    },
+
   keywords: [
     "open source contributions",
     "developer platform",
