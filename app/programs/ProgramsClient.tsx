@@ -26,7 +26,7 @@ export default function ProgramsClient() {
           p-6 sm:p-10 md:p-16"
         >
           {/* 🎥 Background VIDEO (decorative) */}
-          <video
+          {/* <video
             className="absolute inset-0 w-full h-full object-cover"
             src="/program-bg.mp4"
             autoPlay
@@ -35,7 +35,15 @@ export default function ProgramsClient() {
             playsInline
             preload="none"
             aria-hidden="true"
-          />
+          /> */}
+
+          <img
+  src="/program-hero-bg.png"
+  alt=""
+  aria-hidden="true"
+  className="absolute inset-0 w-full h-full object-cover"
+/>
+
 
           {/* VERY LIGHT vignette */}
           <div
