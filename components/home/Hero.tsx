@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative w-full min-h-svh overflow-hidden">
       {/* 🎥 BACKGROUND VIDEO */}
-<video
+{/* <video
   className="absolute inset-0 w-full h-full object-cover"
   src="/hero-bg.mp4"
   autoPlay
@@ -16,7 +16,19 @@ export default function Hero() {
   style={{
     objectPosition: "125% right",
   }}
+/> */}
+
+<video
+  className="absolute inset-0 h-full w-full object-cover"
+  src="https://res.cloudinary.com/dtc3kiepa/video/upload/f_auto,q_auto,vc_auto/hero-bg_sx3xnh"
+  poster="https://res.cloudinary.com/dtc3kiepa/video/upload/so_0/hero-bg_sx3xnh.jpg"
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="metadata"
 />
+
 
 
       {/* 🌫️ OVERLAY (controls contrast) */}

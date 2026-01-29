@@ -276,6 +276,171 @@
 // }
 
 
+// import "./globals.css";
+// import Navbar from "@/components/layout/Navbar";
+// import Footer from "@/components/layout/Footer";
+// import type { Metadata } from "next";
+// import Script from "next/script";
+
+// export const metadata: Metadata = {
+//   metadataBase: new URL("https://silicality.com"),
+
+//   title: {
+//     default: "Silicality — Build, Learn & Create Real AI Products",
+//     template: "%s | Silicality",
+//   },
+
+//   description:
+//     "Silicality builds AI-powered products and developer programs. We help startups, creators, and organizations turn ideas into real-world impact.",
+
+//   icons: {
+//     icon: "/favicon.ico",
+//     apple: "/apple-icon.png",
+//   },
+
+//   keywords: [
+//     "Silicality",
+//     "AI products",
+//     "developer programs",
+//     "technology platform",
+//     "startup ecosystem",
+//     "open source",
+//     "AI development",
+//   ],
+
+//   authors: [{ name: "Ayush Sachan" }],
+//   creator: "Ayush Sachan",
+
+//   openGraph: {
+//     title: "Silicality — Build Real AI Products",
+//     description:
+//       "An AI-powered platform building real products, programs, and developer ecosystems for long-term impact.",
+//     url: "https://silicality.com",
+//     siteName: "Silicality",
+//     images: [
+//       {
+//         url: "/logo.png",
+//         width: 1200,
+//         height: 630,
+//         alt: "Silicality logo",
+//       },
+//     ],
+//     locale: "en_US",
+//     type: "website",
+//   },
+
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "Silicality — Build Real AI Products",
+//     description:
+//       "Building AI-powered products and programs that turn ideas into impact.",
+//     images: ["/logo.png"],
+//   },
+
+//   robots: {
+//     index: true,
+//     follow: true,
+//     googleBot: {
+//       index: true,
+//       follow: true,
+//     },
+//   },
+// };
+
+// export default function RootLayout({
+//   children,
+// }: {
+//   children: React.ReactNode;
+// }) {
+//   return (
+//     <html lang="en">
+//       <head>
+//         {/* ===================== Google Tag Manager ===================== */}
+//         <Script
+//           id="google-tag-manager"
+//           strategy="afterInteractive"
+//           dangerouslySetInnerHTML={{
+//             __html: `
+//               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+//               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+//               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+//               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+//               })(window,document,'script','dataLayer','GTM-WH4VXP84');
+//             `,
+//           }}
+//         />
+
+//         {/* ===================== Google Analytics (GA4) ===================== */}
+//         <Script
+//           src="https://www.googletagmanager.com/gtag/js?id=G-D0XFNJGK17"
+//           strategy="afterInteractive"
+//         />
+//         <Script
+//           id="google-analytics"
+//           strategy="afterInteractive"
+//           dangerouslySetInnerHTML={{
+//             __html: `
+//               window.dataLayer = window.dataLayer || [];
+//               function gtag(){dataLayer.push(arguments);}
+//               gtag('js', new Date());
+//               gtag('config', 'G-D0XFNJGK17', {
+//                 page_path: window.location.pathname,
+//               });
+//             `,
+//           }}
+//         />
+
+//         {/* ===================== Structured Data ===================== */}
+//         <Script
+//           id="silicality-organization-schema"
+//           type="application/ld+json"
+//           strategy="afterInteractive"
+//           dangerouslySetInnerHTML={{
+//             __html: JSON.stringify({
+//               "@context": "https://schema.org",
+//               "@type": "Organization",
+//               name: "Silicality",
+//               url: "https://silicality.com",
+//               logo: "https://silicality.com/logo.png",
+//               founder: {
+//                 "@type": "Person",
+//                 name: "Ayush Sachan",
+//                 jobTitle: "Founder",
+//                 url: "https://silicality.com/about",
+//                 sameAs: [
+//                   "https://www.linkedin.com/in/ayushsachan20",
+//                   "https://www.instagram.com/thedeveloper.guy",
+//                 ],
+//               },
+//               sameAs: [
+//                 "https://www.linkedin.com/company/silicality",
+//                 "https://www.instagram.com/silicality",
+//                 "https://spring.silicality.com",
+//               ],
+//             }),
+//           }}
+//         />
+//       </head>
+
+//       <body className="bg-black text-white antialiased">
+//         {/* Google Tag Manager (noscript) */}
+//         <noscript>
+//           <iframe
+//             src="https://www.googletagmanager.com/ns.html?id=GTM-WH4VXP84"
+//             height="0"
+//             width="0"
+//             style={{ display: "none", visibility: "hidden" }}
+//           />
+//         </noscript>
+
+//         <Navbar />
+//         <main>{children}</main>
+//         <Footer />
+//       </body>
+//     </html>
+//   );
+// }
+
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -325,7 +490,6 @@ export const metadata: Metadata = {
         alt: "Silicality logo",
       },
     ],
-    locale: "en_US",
     type: "website",
   },
 
@@ -340,10 +504,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
   },
 };
 
@@ -353,78 +513,43 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        {/* ===================== Google Tag Manager ===================== */}
-        <Script
-          id="google-tag-manager"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-WH4VXP84');
-            `,
-          }}
-        />
+    <html lang="en" suppressHydrationWarning>
+      {/* ===================== Google Tag Manager ===================== */}
+      <Script
+        id="gtm"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WH4VXP84');
+          `,
+        }}
+      />
 
-        {/* ===================== Google Analytics (GA4) ===================== */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-D0XFNJGK17"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-D0XFNJGK17', {
-                page_path: window.location.pathname,
-              });
-            `,
-          }}
-        />
-
-        {/* ===================== Structured Data ===================== */}
-        <Script
-          id="silicality-organization-schema"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "Silicality",
-              url: "https://silicality.com",
-              logo: "https://silicality.com/logo.png",
-              founder: {
-                "@type": "Person",
-                name: "Ayush Sachan",
-                jobTitle: "Founder",
-                url: "https://silicality.com/about",
-                sameAs: [
-                  "https://www.linkedin.com/in/ayushsachan20",
-                  "https://www.instagram.com/thedeveloper.guy",
-                ],
-              },
-              sameAs: [
-                "https://www.linkedin.com/company/silicality",
-                "https://www.instagram.com/silicality",
-                "https://spring.silicality.com",
-              ],
-            }),
-          }}
-        />
-      </head>
+      {/* ===================== Google Analytics ===================== */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-D0XFNJGK17"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="ga4"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-D0XFNJGK17');
+          `,
+        }}
+      />
 
       <body className="bg-black text-white antialiased">
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
+        {/* GTM noscript (safe) */}
+        <noscript suppressHydrationWarning>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WH4VXP84"
             height="0"
