@@ -23,7 +23,7 @@ export default function Hero() {
   src="https://res.cloudinary.com/dtc3kiepa/video/upload/f_auto,q_auto,vc_auto/hero-bg_sx3xnh"
   poster="https://res.cloudinary.com/dtc3kiepa/video/upload/so_0/hero-bg_sx3xnh.jpg"
   autoPlay
-  loop
+  // loop
   muted
   playsInline
   preload="metadata"
