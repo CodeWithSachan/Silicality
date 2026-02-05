@@ -84,7 +84,7 @@ export default function Footer() {
         border-t border-neutral-800 pt-5 sm:pt-6 text-xs text-neutral-500 md:flex-row">
           <p>© {new Date().getFullYear()} Silicality. All rights reserved.</p>
           <p className="text-neutral-400">
-            Building For Young Generation • Feedback welcome
+            Scaling The Future • Feedback welcome
           </p>
         </div>
       </div>
