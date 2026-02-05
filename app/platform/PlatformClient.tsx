@@ -339,9 +339,9 @@ export default function PlatformPage() {
   ====================== */}
   <div
     aria-hidden
-    className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none"
+    className="absolute inset-0 z-1 flex items-center justify-center pointer-events-none"
   >
-    <div className="w-[420px] h-[420px] rounded-full border border-white/10 blur-sm opacity-60" />
+    <div className="w-105 h-105 rounded-full border border-white/10 blur-sm opacity-60" />
   </div>
 
   {/* =====================
