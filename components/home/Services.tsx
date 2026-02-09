@@ -162,11 +162,210 @@
 //     </section>
 //   );
 // }
+// "use client";
+
+// import { motion, useMotionValue, useTransform } from "framer-motion";
+// import Link from "next/link";
+// import { useState } from "react";
+
+// /* --------------------------------
+//    Data
+// --------------------------------- */
+// const services = [
+//   {
+//     title: "AI & Automation",
+//     desc: "Custom AI solutions that integrate into real products and workflows, focused on usability and measurable impact.",
+//     points: [
+//       "Custom model training & fine-tuning",
+//       "AI assistants & copilots",
+//       "Automation & internal tools",
+//     ],
+//     color: "cyan",
+//     depth: 30,
+//   },
+//   {
+//     title: "Web & App Development",
+//     desc: "Modern, scalable applications built with performance, maintainability, and long-term growth in mind.",
+//     points: [
+//       "Web platforms & dashboards",
+//       "Mobile & cross-platform apps",
+//       "Startup MVPs",
+//     ],
+//     color: "pink",
+//     depth: 60,
+//     featured: true,
+//   },
+//   {
+//     title: "Design & Branding",
+//     desc: "Clear, functional design systems that support strong products and consistent communication.",
+//     points: [
+//       "UI/UX & design systems",
+//       "Brand identity & logos",
+//       "Pitch decks & product visuals",
+//     ],
+//     color: "violet",
+//     depth: 25,
+//   },
+// ];
+
+// /* --------------------------------
+//    Component
+// --------------------------------- */
+// export default function Services() {
+//   return (
+//     <section className="relative overflow-hidden py-28 sm:py-36 px-6">
+//       {/* Base background */}
+//       <div className="absolute inset-0 bg-black" />
+
+//       {/* Living background objects */}
+//       <motion.div
+//         aria-hidden
+//         className="absolute top-24 left-24 w-72 h-72 rounded-full bg-cyan-400/10 blur-3xl"
+//         animate={{ y: [0, -50, 0] }}
+//         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+//       />
+//       <motion.div
+//         aria-hidden
+//         className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-violet-400/10 blur-3xl"
+//         animate={{ y: [0, 60, 0] }}
+//         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+//       />
+//       <motion.div
+//         aria-hidden
+//         className="absolute left-1/2 top-0 h-full w-px bg-neutral-800/60"
+//         animate={{ opacity: [0.2, 0.5, 0.2] }}
+//         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+//       />
+
+//       <div className="relative max-w-6xl mx-auto">
+//         {/* Header */}
+//         <motion.header
+//           initial={{ opacity: 0, y: 32 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true }}
+//           transition={{ duration: 0.9, ease: "easeOut" }}
+//           className="max-w-3xl"
+//         >
+//           <span className="inline-flex mb-5 px-4 py-1 text-xs rounded-full border border-neutral-700 text-neutral-300">
+//             Silicality Labs
+//           </span>
+
+//           <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight">
+//             Building real products with AI & technology
+//           </h2>
+
+//           <p className="mt-6 text-base sm:text-lg text-neutral-400">
+//             We help startups, creators, and organizations turn ideas into
+//             <strong className="text-neutral-200"> production-ready systems</strong>
+//             {" "}— without hype or shortcuts.
+//           </p>
+//         </motion.header>
+
+//         {/* 3D Services Layout */}
+//         <div className="relative mt-20 grid gap-10 md:grid-cols-3">
+//           {services.map((service, i) => (
+//             <ServiceCard key={service.title} service={service} index={i} />
+//           ))}
+//         </div>
+
+//         {/* CTA */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 24 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true }}
+//           transition={{ duration: 0.8, ease: "easeOut" }}
+//           className="mt-20"
+//         >
+//           <Link
+//             href="/contact"
+//             className="
+//               inline-flex items-center gap-2
+//               px-8 py-4 rounded-xl
+//               bg-neutral-100 text-black font-medium
+//               hover:bg-neutral-200 transition
+//             "
+//           >
+//             Start a Project →
+//           </Link>
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// /* --------------------------------
+//    Card with real 3D interaction
+// --------------------------------- */
+// function ServiceCard({ service }: any) {
+//   const x = useMotionValue(0);
+//   const y = useMotionValue(0);
+
+//   const rotateX = useTransform(y, [-50, 50], [8, -8]);
+//   const rotateY = useTransform(x, [-50, 50], [-8, 8]);
+
+//   function handleMove(e: any) {
+//     const rect = e.currentTarget.getBoundingClientRect();
+//     x.set(e.clientX - rect.left - rect.width / 2);
+//     y.set(e.clientY - rect.top - rect.height / 2);
+//   }
+
+//   return (
+//     <motion.article
+//       onMouseMove={handleMove}
+//       onMouseLeave={() => {
+//         x.set(0);
+//         y.set(0);
+//       }}
+//       initial={{ opacity: 0, y: 60, rotateX: 12 }}
+//       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+//       viewport={{ once: true }}
+//       transition={{ duration: 1, ease: "easeOut" }}
+//       style={{
+//         rotateX,
+//         rotateY,
+//         transformStyle: "preserve-3d",
+//         transform: `translateZ(${service.depth}px)`,
+//       }}
+//       className={`
+//         relative rounded-3xl p-8
+//         bg-neutral-900/70 backdrop-blur-xl
+//         border border-white/10
+//         shadow-2xl
+//         hover:scale-[1.04]
+//         transition
+//         ${service.featured ? "ring-1 ring-pink-500/30" : ""}
+//       `}
+//     >
+//       {/* Ambient object */}
+//       <div
+//         aria-hidden
+//         className={`
+//           absolute -top-10 -right-10 w-40 h-40 rounded-full
+//           bg-${service.color}-400/20 blur-2xl
+//         `}
+//       />
+
+//       <h3 className="text-xl sm:text-2xl font-medium">
+//         {service.title}
+//       </h3>
+
+//       <p className="mt-4 text-sm sm:text-base text-neutral-400 leading-relaxed">
+//         {service.desc}
+//       </p>
+
+//       <ul className="mt-6 space-y-2 text-sm text-neutral-300">
+//         {service.points.map((point: string) => (
+//           <li key={point}>— {point}</li>
+//         ))}
+//       </ul>
+//     </motion.article>
+//   );
+// }
+
 "use client";
 
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
 
 /* --------------------------------
    Data
@@ -174,114 +373,127 @@ import { useState } from "react";
 const services = [
   {
     title: "AI & Automation",
-    desc: "Custom AI solutions that integrate into real products and workflows, focused on usability and measurable impact.",
+    label: "AI",
+    desc: "Custom AI systems integrated into real products and workflows — focused on usability, reliability, and measurable impact.",
     points: [
       "Custom model training & fine-tuning",
       "AI assistants & copilots",
       "Automation & internal tools",
     ],
-    color: "cyan",
-    depth: 30,
+    color: "bg-blue-500",
+    text: "text-blue-400",
   },
   {
     title: "Web & App Development",
-    desc: "Modern, scalable applications built with performance, maintainability, and long-term growth in mind.",
+    label: "BUILD",
+    desc: "Modern, scalable applications engineered for performance, maintainability, and long-term growth.",
     points: [
       "Web platforms & dashboards",
       "Mobile & cross-platform apps",
       "Startup MVPs",
     ],
-    color: "pink",
-    depth: 60,
+    color: "bg-rose-500",
+    text: "text-rose-400",
     featured: true,
   },
   {
     title: "Design & Branding",
+    label: "DESIGN",
     desc: "Clear, functional design systems that support strong products and consistent communication.",
     points: [
       "UI/UX & design systems",
       "Brand identity & logos",
       "Pitch decks & product visuals",
     ],
-    color: "violet",
-    depth: 25,
+    color: "bg-violet-500",
+    text: "text-violet-400",
   },
 ];
 
 /* --------------------------------
-   Component
+   Main Component
 --------------------------------- */
 export default function Services() {
   return (
-    <section className="relative overflow-hidden py-28 sm:py-36 px-6">
-      {/* Base background */}
-      <div className="absolute inset-0 bg-black" />
+    <section className="relative py-32 px-6 bg-[#0B0E14] overflow-hidden">
+      {/* Architectural base */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.04),transparent_55%)]" />
 
-      {/* Living background objects */}
-      <motion.div
+      {/* Signature dot matrix pattern */}
+      <div
         aria-hidden
-        className="absolute top-24 left-24 w-72 h-72 rounded-full bg-cyan-400/10 blur-3xl"
-        animate={{ y: [0, -50, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 pointer-events-none opacity-[0.035]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+          backgroundSize: "28px 28px",
+        }}
       />
+
+      {/* Right-side atmospheric mass */}
       <motion.div
         aria-hidden
-        className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-violet-400/10 blur-3xl"
-        animate={{ y: [0, 60, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute left-1/2 top-0 h-full w-px bg-neutral-800/60"
-        animate={{ opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="
+          absolute right-[-20%] top-[10%]
+          w-150 h-150
+          rounded-full
+          bg-violet-500/10
+          blur-[120px]
+        "
+        animate={{ y: [0, -30, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
         <motion.header
-          initial={{ opacity: 0, y: 32 }}
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+          transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          <span className="inline-flex mb-5 px-4 py-1 text-xs rounded-full border border-neutral-700 text-neutral-300">
+          <span className="inline-flex mb-5 px-4 py-1 text-xs rounded-full border border-white/10 text-neutral-300">
             Silicality Labs
           </span>
 
-          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight">
-            Building real products with AI & technology
+          <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-neutral-100">
+            Services built for
+            <span className="block text-neutral-400">
+              real-world execution
+            </span>
           </h2>
 
-          <p className="mt-6 text-base sm:text-lg text-neutral-400">
-            We help startups, creators, and organizations turn ideas into
-            <strong className="text-neutral-200"> production-ready systems</strong>
-            {" "}— without hype or shortcuts.
+          <p className="mt-6 text-lg text-neutral-400">
+            We help founders and teams move from ideas to
+            <span className="text-neutral-200">
+              {" "}production-ready systems
+            </span>
+            — with clarity, craft, and zero hype.
           </p>
         </motion.header>
 
-        {/* 3D Services Layout */}
-        <div className="relative mt-20 grid gap-10 md:grid-cols-3">
-          {services.map((service, i) => (
-            <ServiceCard key={service.title} service={service} index={i} />
+        {/* Services Grid */}
+        <div className="relative mt-24 grid gap-12 md:grid-cols-3">
+          {services.map((service) => (
+            <ServiceCard key={service.title} service={service} />
           ))}
         </div>
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mt-20"
+          transition={{ duration: 0.7 }}
+          className="mt-24"
         >
           <Link
             href="/contact"
             className="
               inline-flex items-center gap-2
               px-8 py-4 rounded-xl
-              bg-neutral-100 text-black font-medium
+              bg-white text-black font-medium
               hover:bg-neutral-200 transition
             "
           >
@@ -294,14 +506,14 @@ export default function Services() {
 }
 
 /* --------------------------------
-   Card with real 3D interaction
+   Service Card
 --------------------------------- */
 function ServiceCard({ service }: any) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const rotateX = useTransform(y, [-50, 50], [8, -8]);
-  const rotateY = useTransform(x, [-50, 50], [-8, 8]);
+  const rotateX = useTransform(y, [-40, 40], [6, -6]);
+  const rotateY = useTransform(x, [-40, 40], [-6, 6]);
 
   function handleMove(e: any) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -316,40 +528,48 @@ function ServiceCard({ service }: any) {
         x.set(0);
         y.set(0);
       }}
-      initial={{ opacity: 0, y: 60, rotateX: 12 }}
-      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
       style={{
         rotateX,
         rotateY,
         transformStyle: "preserve-3d",
-        transform: `translateZ(${service.depth}px)`,
       }}
       className={`
         relative rounded-3xl p-8
-        bg-neutral-900/70 backdrop-blur-xl
+        bg-[#121621]
         border border-white/10
-        shadow-2xl
-        hover:scale-[1.04]
         transition
-        ${service.featured ? "ring-1 ring-pink-500/30" : ""}
+        hover:border-white/20
+        hover:-translate-y-1
+        ${service.featured ? "md:-mt-10" : ""}
       `}
     >
-      {/* Ambient object */}
+      {/* Color spine */}
       <div
-        aria-hidden
-        className={`
-          absolute -top-10 -right-10 w-40 h-40 rounded-full
-          bg-${service.color}-400/20 blur-2xl
-        `}
+        className={`absolute left-0 top-0 h-full w-1 rounded-l-3xl ${service.color}`}
       />
 
-      <h3 className="text-xl sm:text-2xl font-medium">
+      {/* Floating ambient object */}
+      <motion.div
+        aria-hidden
+        className={`absolute -top-12 -right-12 w-32 h-32 rounded-full ${service.color} opacity-[0.08] blur-3xl`}
+        animate={{ y: [0, -16, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Label */}
+      <span className={`text-xs tracking-widest ${service.text}`}>
+        {service.label}
+      </span>
+
+      <h3 className="mt-3 text-xl font-medium text-neutral-100">
         {service.title}
       </h3>
 
-      <p className="mt-4 text-sm sm:text-base text-neutral-400 leading-relaxed">
+      <p className="mt-4 text-neutral-400 leading-relaxed">
         {service.desc}
       </p>
 
