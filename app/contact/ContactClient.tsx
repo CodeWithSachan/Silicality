@@ -25,11 +25,12 @@ export default function ContactClient() {
             Start a Project
           </h1>
 
-          <p className="mt-5 text-base sm:text-lg text-neutral-400 max-w-2xl">
-            Tell us what you’re building — product, idea, or collaboration.
-            If it’s a good fit, we’ll reply within{" "}
-            <span className="text-white">24–48 hours</span>.
-          </p>
+<p className="mt-5 text-base sm:text-lg text-neutral-400 max-w-2xl">
+  Tell us what you want to build — website, application, or AI product.
+  If the scope is clear, we’ll respond within{" "}
+  <span className="text-white">24–48 hours</span> to discuss execution.
+</p>
+
         </motion.div>
 
         {/* FORM */}
