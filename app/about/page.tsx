@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "About Ayush Sachan — Founder of Silicality",
+  title: "About Silicality",
   description:
     "Ayush Sachan is the founder of Silicality, a contribution-first AI and technology ecosystem focused on building real-world products and platforms.",
   keywords: [
