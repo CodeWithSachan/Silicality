@@ -13,8 +13,8 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Services", href: "/services" },
-    { label: "Programs", href: "/programs" },
-    { label: "Mentorship", href: "/mentorship" },
+    { label: "Events", href: "/programs" },
+    // { label: "Mentorship", href: "/mentorship" },
     { label: "Sponsors", href: "/sponsors" },
   ];
 
