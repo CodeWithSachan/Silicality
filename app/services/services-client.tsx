@@ -74,39 +74,72 @@ export default function ServicesClient() {
           className="mt-20 grid gap-6 sm:grid-cols-2 md:grid-cols-3"
         >
           {[
-            {
-              title: "AI & Automation",
-              desc:
-                "AI solutions that solve real problems and integrate seamlessly into workflows.",
-              items: [
-                "Custom model training & fine-tuning",
-                "Chatbots & AI assistants",
-                "AI integrations",
-                "Workflow automation",
-              ],
-            },
-            {
-              title: "Web & App Development",
-              desc:
-                "Scalable, modern digital products — from MVPs to production systems.",
-              items: [
-                "Web platforms & dashboards",
-                "Mobile apps",
-                "Startup MVPs",
-                "Performance optimization",
-              ],
-            },
-            {
-              title: "Design & Branding",
-              desc:
-                "Clear, functional design systems that support strong products.",
-              items: [
-                "UI/UX design",
-                "Brand identity",
-                "Marketing creatives",
-                "Pitch decks",
-              ],
-            },
+{
+  title: "AI & Automation",
+  desc:
+    "Practical AI solutions that streamline operations and integrate seamlessly into your existing workflows.",
+  items: [
+    "Custom Model Training & Fine-Tuning",
+    "Chatbots & AI Assistants",
+    "AI System Integrations",
+    "Workflow & Process Automation",
+  ],
+},
+{
+  title: "Web Development",
+  desc:
+    "Modern, scalable web products built for performance, usability, and long-term growth.",
+  items: [
+    "Web Platforms & Dashboards",
+    "Custom Web Applications",
+    "Startup MVP Development",
+    "Performance Optimization",
+  ],
+},
+{
+  title: "App Development",
+  desc:
+    "High-performance mobile applications designed for seamless user experience and business impact.",
+  items: [
+    "Android & iOS App Development",
+    "Cross-Platform Applications",
+    "Startup MVP Apps",
+    "UI/UX Implementation",
+  ],
+},
+{
+  title: "Design & Branding",
+  desc:
+    "Strategic design systems and brand identities that create clarity, trust, and recognition.",
+  items: [
+    "UI/UX Design",
+    "Brand Identity & Logo Design",
+    "Visual Systems & Guidelines",
+    "Marketing & Pitch Deck Design",
+  ],
+},
+{
+  title: "Video Editing",
+  desc:
+    "High-quality video content crafted to engage audiences and elevate your brand presence.",
+  items: [
+    "Promotional & Brand Videos",
+    "Reels & Short-Form Content",
+    "YouTube Video Editing",
+    "Corporate & Event Videos",
+  ],
+},
+{
+  title: "Social Media Management",
+  desc:
+    "Strategic content and account management to grow your audience and strengthen digital presence.",
+  items: [
+    "Content Strategy & Planning",
+    "Creative Post Design",
+    "Account Management",
+    "Analytics & Growth Optimization",
+  ],
+}
           ].map((service) => (
             <motion.div
               key={service.title}
