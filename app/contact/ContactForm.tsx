@@ -110,17 +110,17 @@ export default function ContactForm() {
             text-white focus:outline-none focus:border-neutral-500 transition"
           >
             <option value="">Select an option</option>
-            <option value="AI Solutions">AI Solutions</option>
-            <option value="Web Development">Web Development</option>
-            <option value="App Development">App Development</option>
-            <option value="Design & Branding">Design & Branding</option>
+            <option value="AI Solutions">AI Systems / Automation</option>
+            <option value="Web Development">Web Platforms</option>
+            <option value="App Development">Product Design & Branding</option>
+            <option value="Design & Branding">Startup MVP Development</option>
             <option value="Events & Sponsorships">
-              Events & Sponsorships
+              Social Media Management / Content Creation
             </option>
             <option value="Mentorship / Collaboration">
-              Mentorship / Collaboration
+              Partnership / Collaboration
             </option>
-            <option value="Other">Other</option>
+            <option value="Other">General Inquiry</option>
           </select>
         </div>
 

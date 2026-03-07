@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 
 import Hero from "@/components/home/Hero";
-import WhatWeDo from "@/components/home/WhatWeDo";
 import Services from "@/components/home/Services";
-import Programs from "@/components/home/Programs";
-import Mentorship from "@/components/home/Mentorship";
-import Platform from "@/components/home/Platform";
+import Work from "@/components/home/Work";
+import TechStack from "@/components/home/TechStack";
 import Sponsors from "@/components/home/Sponsors";
 import FinalCTA from "@/components/home/FinalCTA";
 
@@ -27,11 +25,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <WhatWeDo />
       <Services />
-      <Programs />
-      <Mentorship />
-      <Platform />
+      <Work/>
+      <TechStack />
       <Sponsors />
       <FinalCTA />
     </>
