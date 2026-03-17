@@ -1,727 +1,168 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-  const isHome = pathname === "/";
+const NAV_LINKS = [
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Tools",    href: "/tools"    },
+  { label: "Platform", href: "/platform" },
+  { label: "About",    href: "/about"    },
+];
 
-  const navLinks = [
-    { label: "Services", href: "/services" },
-    { label: "Events", href: "/programs" },
-    // { label: "Mentorship", href: "/mentorship" },
-    { label: "Sponsors", href: "/sponsors" },
-  ];
+export default function Navbar() {
+  const pathname               = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => { setMenuOpen(false); }, [pathname]);
 
   return (
-    <nav
-      className="
-        sticky top-0 z-50
-        bg-black/25
-        backdrop-blur-xl
-        shadow-[0_1px_0_rgba(255,255,255,0.06)]
-      "
-    >
-      <div className="px-6 sm:px-8 pt-[env(safe-area-inset-top)]">
-        <div className="max-w-6xl mx-auto flex h-20 items-center justify-between">
-          
-          {/* ===== LOGO ===== */}
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="/logo.png"
-              alt=""
-              width={120}
-              height={120}
-              priority
-              className="opacity-95"
-            />
-          </Link>
+    <header style={{
+      position:            "sticky",
+      top:                 0,
+      zIndex:              100,
+      borderBottom:        "0.5px solid #1e1e26",
+      background:          scrolled ? "rgba(9,9,11,0.94)" : "rgba(9,9,11,0.82)",
+      backdropFilter:      "blur(14px)",
+      WebkitBackdropFilter:"blur(14px)",
+      transition:          "background 0.3s",
+    }}>
+      <nav style={{
+        display:        "flex",
+        alignItems:     "center",
+        justifyContent: "space-between",
+        padding:        "1rem 3rem",
+        maxWidth:       "1400px",
+        margin:         "0 auto",
+      }}>
 
-          {/* ===== DESKTOP NAV ===== */}
-          <div className="hidden md:flex items-center gap-10 text-sm text-neutral-300">
-            {!isHome && (
-              <Link href="/" className="hover:text-white transition">
-                Home
-              </Link>
-            )}
+        {/* LOGO */}
+        <Link href="/" style={{
+          fontFamily:     "'Syne', sans-serif",
+          fontSize:       "18px",
+          fontWeight:     800,
+          letterSpacing:  "-0.3px",
+          color:          "#f0ece6",
+          textDecoration: "none",
+          flexShrink:     0,
+        }}>
+          Silicality<span style={{ color: "#e8793a" }}>.</span>
+        </Link>
 
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`relative transition ${
-                  pathname === link.href
-                    ? "text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            <Link
-              href="/contact"
-              className="
-                ml-4 px-6 py-2.5 rounded-xl
-                bg-white text-black font-medium
-                hover:bg-neutral-200 transition
-              "
+        {/* DESKTOP LINKS */}
+        <div className="nav-desktop" style={{
+          display:    "flex",
+          gap:        "2.5rem",
+          alignItems: "center",
+        }}>
+          {NAV_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} style={{
+              fontSize:       "13px",
+              color:          pathname === link.href ? "#f0ece6" : "#7a7a88",
+              textDecoration: "none",
+              fontFamily:     "'DM Sans', sans-serif",
+              transition:     "color 0.2s",
+            }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#f0ece6")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = pathname === link.href ? "#f0ece6" : "#7a7a88")}
             >
-              Start a Project
+              {link.label}
             </Link>
-          </div>
+          ))}
+        </div>
 
-          {/* ===== MOBILE TOGGLE ===== */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="
-              md:hidden flex h-11 w-11 items-center justify-center
-              rounded-xl text-neutral-300
-              hover:text-white hover:bg-white/10 transition
-            "
-            aria-label="Toggle menu"
+        {/* CTA */}
+        <div className="nav-desktop">
+          <Link href="/contact" style={{
+            display:        "inline-block",
+            background:     "#e8793a",
+            color:          "#ffffff",
+            padding:        "9px 22px",
+            borderRadius:   "8px",
+            fontSize:       "13px",
+            fontFamily:     "'DM Sans', sans-serif",
+            fontWeight:     500,
+            textDecoration: "none",
+            whiteSpace:     "nowrap",
+          }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.opacity = "0.85")}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.opacity = "1")}
           >
-            <span className="relative block h-5 w-5">
-              <span
-                className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-transform duration-200
-                ${open ? "rotate-45" : "-translate-y-2"}`}
-              />
-              <span
-                className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-opacity duration-200
-                ${open ? "opacity-0" : "opacity-100"}`}
-              />
-              <span
-                className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-transform duration-200
-                ${open ? "-rotate-45" : "translate-y-2"}`}
-              />
-            </span>
-          </button>
+            Start a Project
+          </Link>
+        </div>
+
+        {/* HAMBURGER */}
+        <button className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)}
+          style={{ display:"none", flexDirection:"column", gap:"5px", padding:"6px", background:"transparent", border:"none", cursor:"pointer" }}
+          aria-label="Toggle menu"
+        >
+          {[0,1,2].map((i) => (
+            <span key={i} style={{
+              display:   "block",
+              width:     "20px",
+              height:    "1.5px",
+              background:"#f0ece6",
+              transition:"all 0.3s",
+              opacity:   i === 1 && menuOpen ? 0 : 1,
+              transform: i === 0 && menuOpen ? "rotate(45deg) translateY(6.5px)"
+                       : i === 2 && menuOpen ? "rotate(-45deg) translateY(-6.5px)"
+                       : "none",
+            }} />
+          ))}
+        </button>
+      </nav>
+
+      {/* MOBILE MENU */}
+      <div style={{
+        overflow:   "hidden",
+        maxHeight:  menuOpen ? "380px" : "0",
+        transition: "max-height 0.3s ease",
+        borderTop:  menuOpen ? "0.5px solid #1e1e26" : "none",
+        background: "#09090b",
+      }}>
+        <div style={{ display:"flex", flexDirection:"column", padding:"1rem 1.5rem", gap:"2px" }}>
+          {NAV_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} style={{
+              fontSize:       "14px",
+              color:          pathname === link.href ? "#f0ece6" : "#7a7a88",
+              textDecoration: "none",
+              padding:        "12px 0",
+              borderBottom:   "0.5px solid #1e1e26",
+              fontFamily:     "'DM Sans', sans-serif",
+            }}>
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/contact" style={{
+            display:"block", marginTop:"12px",
+            background:"#e8793a", color:"#ffffff",
+            textAlign:"center", padding:"12px",
+            borderRadius:"8px", fontSize:"14px",
+            fontFamily:"'DM Sans', sans-serif",
+            fontWeight:500, textDecoration:"none",
+          }}>
+            Start a Project
+          </Link>
         </div>
       </div>
 
-      {/* ===== MOBILE MENU ===== */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            className="
-              md:hidden
-              bg-black/70
-              backdrop-blur-xl
-              shadow-[0_20px_40px_rgba(0,0,0,0.4)]
-            "
-          >
-            <div className="px-8 py-8 flex flex-col gap-6 text-neutral-300">
-              <Link
-                href="/"
-                onClick={() => setOpen(false)}
-                className={`text-base ${
-                  isHome ? "text-white" : "hover:text-white"
-                }`}
-              >
-                Home
-              </Link>
-
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`text-base transition ${
-                    pathname === link.href
-                      ? "text-white"
-                      : "hover:text-white"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-
-              <Link
-                href="/contact"
-                onClick={() => setOpen(false)}
-                className="
-                  mt-2 px-6 py-3 rounded-xl
-                  bg-white text-black font-medium
-                  text-center hover:bg-neutral-200 transition
-                "
-              >
-                Start a Project
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+      <style>{`
+        @media (max-width: 768px) {
+          .nav-desktop   { display: none !important; }
+          .nav-hamburger { display: flex !important; }
+          nav { padding: 1rem 1.5rem !important; }
+        }
+      `}</style>
+    </header>
   );
 }
-
-// "use client";
-
-// import Link from "next/link";
-// import Image from "next/image";
-// import { useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { usePathname } from "next/navigation";
-
-// export default function Navbar() {
-//   const [open, setOpen] = useState(false);
-//   const pathname = usePathname();
-//   const isHome = pathname === "/";
-
-//   const navLinks = [
-//     { label: "Services", href: "/services" },
-//     { label: "Programs", href: "/programs" },
-//     { label: "Mentorship", href: "/mentorship" },
-//     { label: "Sponsors", href: "/sponsors" },
-//   ];
-
-//   return (
-//     <nav className="sticky top-6 z-50 flex justify-center px-6">
-//       {/* ===== FLOATING CONTAINER ===== */}
-//       <div
-//         className="
-//           w-full max-w-6xl
-//           rounded-2xl
-//           bg-black/40
-//           backdrop-blur-xl
-//           border border-white/10
-//           shadow-[0_8px_40px_rgba(0,0,0,0.5)]
-//         "
-//       >
-//         <div className="px-6 sm:px-8">
-//           <div className="flex h-20 items-center justify-between">
-
-//             {/* ===== LOGO ===== */}
-//             <Link href="/" className="flex items-center gap-3">
-//               <Image
-//                 src="/logo.png"
-//                 alt="Logo"
-//                 width={120}
-//                 height={120}
-//                 priority
-//                 className="opacity-95"
-//               />
-//             </Link>
-
-//             {/* ===== DESKTOP NAV ===== */}
-//             <div className="hidden md:flex items-center gap-10 text-sm text-neutral-300">
-//               {!isHome && (
-//                 <Link href="/" className="hover:text-white transition">
-//                   Home
-//                 </Link>
-//               )}
-
-//               {navLinks.map((link) => (
-//                 <Link
-//                   key={link.href}
-//                   href={link.href}
-//                   className={`transition ${
-//                     pathname === link.href
-//                       ? "text-white"
-//                       : "hover:text-white"
-//                   }`}
-//                 >
-//                   {link.label}
-//                 </Link>
-//               ))}
-
-//               <Link
-//                 href="/contact"
-//                 className="
-//                   ml-4 px-6 py-2.5 rounded-full
-//                   bg-white text-black font-medium
-//                   hover:bg-neutral-200 transition
-//                 "
-//               >
-//                 Start a Project
-//               </Link>
-//             </div>
-
-//             {/* ===== MOBILE TOGGLE ===== */}
-//             <button
-//               onClick={() => setOpen(!open)}
-//               className="
-//                 md:hidden flex h-11 w-11 items-center justify-center
-//                 rounded-xl text-neutral-300
-//                 hover:text-white hover:bg-white/10 transition
-//               "
-//               aria-label="Toggle menu"
-//             >
-//               <span className="relative block h-5 w-5">
-//                 <span
-//                   className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-transform duration-200
-//                   ${open ? "rotate-45" : "-translate-y-2"}`}
-//                 />
-//                 <span
-//                   className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-opacity duration-200
-//                   ${open ? "opacity-0" : "opacity-100"}`}
-//                 />
-//                 <span
-//                   className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-transform duration-200
-//                   ${open ? "-rotate-45" : "translate-y-2"}`}
-//                 />
-//               </span>
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* ===== MOBILE MENU ===== */}
-//         <AnimatePresence>
-//           {open && (
-//             <motion.div
-//               initial={{ opacity: 0, y: -12 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               exit={{ opacity: 0, y: -12 }}
-//               transition={{ duration: 0.25, ease: "easeOut" }}
-//               className="
-//                 md:hidden
-//                 rounded-b-2xl
-//                 bg-black/60
-//                 backdrop-blur-xl
-//                 border-t border-white/10
-//               "
-//             >
-//               <div className="px-8 py-8 flex flex-col gap-6 text-neutral-300">
-//                 <Link
-//                   href="/"
-//                   onClick={() => setOpen(false)}
-//                   className={`text-base ${
-//                     isHome ? "text-white" : "hover:text-white"
-//                   }`}
-//                 >
-//                   Home
-//                 </Link>
-
-//                 {navLinks.map((link) => (
-//                   <Link
-//                     key={link.href}
-//                     href={link.href}
-//                     onClick={() => setOpen(false)}
-//                     className={`text-base transition ${
-//                       pathname === link.href
-//                         ? "text-white"
-//                         : "hover:text-white"
-//                     }`}
-//                   >
-//                     {link.label}
-//                   </Link>
-//                 ))}
-
-//                 <Link
-//                   href="/contact"
-//                   onClick={() => setOpen(false)}
-//                   className="
-//                     mt-2 px-6 py-3 rounded-full
-//                     bg-white text-black font-medium
-//                     text-center hover:bg-neutral-200 transition
-//                   "
-//                 >
-//                   Start a Project
-//                 </Link>
-//               </div>
-//             </motion.div>
-//           )}
-//         </AnimatePresence>
-//       </div>
-//     </nav>
-//   );
-// }
-// "use client";
-
-// import Link from "next/link";
-// import Image from "next/image";
-// import { useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { usePathname } from "next/navigation";
-
-// export default function Navbar() {
-//   const [open, setOpen] = useState(false);
-//   const pathname = usePathname();
-//   const isHome = pathname === "/";
-
-//   const navLinks = [
-//     { label: "Services", href: "/services" },
-//     { label: "Programs", href: "/programs" },
-//     { label: "Mentorship", href: "/mentorship" },
-//     { label: "Sponsors", href: "/sponsors" },
-//   ];
-
-//   return (
-//     /* 1. Changed to 'fixed' and 'inset-x-0' so it floats OVER the hero.
-//        2. added 'pointer-events-none' so the empty sides of the nav 
-//           don't block interactions with the hero section.
-//     */
-//     <nav className="fixed top-6 inset-x-0 z-50 flex justify-center px-6 pointer-events-none">
-      
-//       {/* ===== FLOATING CONTAINER ===== */}
-//       <div
-//         className="
-//           w-full max-w-6xl
-//           rounded-2xl
-//           bg-black/40
-//           backdrop-blur-xl
-//           border border-white/10
-//           shadow-[0_8px_40px_rgba(0,0,0,0.5)]
-//           /* Re-enable pointer events for the actual navbar UI */
-//           pointer-events-auto
-//         "
-//       >
-//         <div className="px-6 sm:px-8">
-//           <div className="flex h-20 items-center justify-between">
-
-//             {/* ===== LOGO ===== */}
-//             <Link href="/" className="flex items-center gap-3">
-//               <Image
-//                 src="/logo.png"
-//                 alt="Logo"
-//                 width={120}
-//                 height={120}
-//                 priority
-//                 className="opacity-95"
-//               />
-//             </Link>
-
-//             {/* ===== DESKTOP NAV ===== */}
-//             <div className="hidden md:flex items-center gap-10 text-sm text-neutral-300">
-//               {!isHome && (
-//                 <Link href="/" className="hover:text-white transition">
-//                   Home
-//                 </Link>
-//               )}
-
-//               {navLinks.map((link) => (
-//                 <Link
-//                   key={link.href}
-//                   href={link.href}
-//                   className={`transition ${
-//                     pathname === link.href
-//                       ? "text-white"
-//                       : "hover:text-white"
-//                   }`}
-//                 >
-//                   {link.label}
-//                 </Link>
-//               ))}
-
-//               <Link
-//                 href="/contact"
-//                 className="
-//                   ml-4 px-6 py-2.5 rounded-full
-//                   bg-white text-black font-medium
-//                   hover:bg-neutral-200 transition
-//                 "
-//               >
-//                 Start a Project
-//               </Link>
-//             </div>
-
-//             {/* ===== MOBILE TOGGLE ===== */}
-//             <button
-//               onClick={() => setOpen(!open)}
-//               className="
-//                 md:hidden flex h-11 w-11 items-center justify-center
-//                 rounded-xl text-neutral-300
-//                 hover:text-white hover:bg-white/10 transition
-//               "
-//               aria-label="Toggle menu"
-//             >
-//               <span className="relative block h-5 w-5">
-//                 <span
-//                   className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-transform duration-200
-//                   ${open ? "rotate-45" : "-translate-y-2"}`}
-//                 />
-//                 <span
-//                   className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-opacity duration-200
-//                   ${open ? "opacity-0" : "opacity-100"}`}
-//                 />
-//                 <span
-//                   className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-transform duration-200
-//                   ${open ? "-rotate-45" : "translate-y-2"}`}
-//                 />
-//               </span>
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* ===== MOBILE MENU ===== */}
-//         <AnimatePresence>
-//           {open && (
-//             <motion.div
-//               initial={{ opacity: 0, y: -12 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               exit={{ opacity: 0, y: -12 }}
-//               transition={{ duration: 0.25, ease: "easeOut" }}
-//               className="
-//                 md:hidden
-//                 rounded-b-2xl
-//                 bg-black/80
-//                 backdrop-blur-2xl
-//                 border-t border-white/10
-//               "
-//             >
-//               <div className="px-8 py-8 flex flex-col gap-6 text-neutral-300">
-//                 <Link
-//                   href="/"
-//                   onClick={() => setOpen(false)}
-//                   className={`text-base ${
-//                     isHome ? "text-white" : "hover:text-white"
-//                   }`}
-//                 >
-//                   Home
-//                 </Link>
-
-//                 {navLinks.map((link) => (
-//                   <Link
-//                     key={link.href}
-//                     href={link.href}
-//                     onClick={() => setOpen(false)}
-//                     className={`text-base transition ${
-//                       pathname === link.href
-//                         ? "text-white"
-//                         : "hover:text-white"
-//                     }`}
-//                   >
-//                     {link.label}
-//                   </Link>
-//                 ))}
-
-//                 <Link
-//                   href="/contact"
-//                   onClick={() => setOpen(false)}
-//                   className="
-//                     mt-2 px-6 py-3 rounded-full
-//                     bg-white text-black font-medium
-//                     text-center hover:bg-neutral-200 transition
-//                   "
-//                 >
-//                   Start a Project
-//                 </Link>
-//               </div>
-//             </motion.div>
-//           )}
-//         </AnimatePresence>
-//       </div>
-//     </nav>
-//   );
-// }
-// "use client";
-
-// import Link from "next/link";
-// import Image from "next/image";
-// import { useState, useEffect } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import { usePathname } from "next/navigation";
-
-// export default function Navbar() {
-//   const [open, setOpen] = useState(false);
-//   const [scrolled, setScrolled] = useState(false);
-//   const pathname = usePathname();
-//   const isHome = pathname === "/";
-
-//   /* ===== Scroll Detection ===== */
-//   useEffect(() => {
-//     const handleScroll = () => setScrolled(window.scrollY > 40);
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   /* ===== Lock Body Scroll When Mobile Menu Open ===== */
-//   useEffect(() => {
-//     document.body.style.overflow = open ? "hidden" : "auto";
-//   }, [open]);
-
-//   /* ===== Close menu on route change ===== */
-//   useEffect(() => {
-//     setOpen(false);
-//   }, [pathname]);
-
-//   const navLinks = [
-//     { label: "Services", href: "/services" },
-//     { label: "Programs", href: "/programs" },
-//     { label: "Mentorship", href: "/mentorship" },
-//     { label: "Sponsors", href: "/sponsors" },
-//   ];
-
-//   return (
-//     <>
-//       {/* ===== NAVBAR ===== */}
-//       <nav className="fixed top-4 inset-x-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
-//         <div
-//           className={`
-//             w-full max-w-6xl rounded-2xl transition-all duration-300
-//             pointer-events-auto
-//             ${
-//               scrolled
-//                 ? "bg-black/80 backdrop-blur-2xl border border-white/10 shadow-xl"
-//                 : "bg-black/40 backdrop-blur-xl border border-white/10"
-//             }
-//           `}
-//         >
-//           <div className="px-4 sm:px-8">
-//             <div className="flex h-16 sm:h-20 items-center justify-between">
-
-//               {/* LOGO */}
-//               <Link href="/" className="flex items-center gap-2">
-//                 <Image
-//                   src="/logo.png"
-//                   alt="Logo"
-//                   width={95}
-//                   height={95}
-//                   priority
-//                   className="opacity-95"
-//                 />
-//               </Link>
-
-//               {/* DESKTOP NAV */}
-//               <div className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
-//                 {!isHome && (
-//                   <NavItem label="Home" href="/" pathname={pathname} />
-//                 )}
-//                 {navLinks.map((link) => (
-//                   <NavItem
-//                     key={link.href}
-//                     label={link.label}
-//                     href={link.href}
-//                     pathname={pathname}
-//                   />
-//                 ))}
-
-//                 <Link
-//                   href="/contact"
-//                   className="ml-6 px-6 py-2.5 rounded-full bg-white text-black font-semibold hover:scale-[1.03] transition"
-//                 >
-//                   Start a Project
-//                 </Link>
-//               </div>
-
-//               {/* MOBILE BUTTON */}
-//               <button
-//                 onClick={() => setOpen(!open)}
-//                 className="md:hidden flex h-11 w-11 items-center justify-center rounded-xl text-neutral-300 hover:bg-white/10"
-//               >
-//                 <span className="relative block h-5 w-5">
-//                   <span
-//                     className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-transform duration-200
-//                     ${open ? "rotate-45" : "-translate-y-2"}`}
-//                   />
-//                   <span
-//                     className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-opacity duration-200
-//                     ${open ? "opacity-0" : "opacity-100"}`}
-//                   />
-//                   <span
-//                     className={`absolute left-0 top-1/2 h-0.5 w-full bg-current transition-transform duration-200
-//                     ${open ? "-rotate-45" : "translate-y-2"}`}
-//                   />
-//                 </span>
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </nav>
-
-//       {/* ===== FULL SCREEN MOBILE DRAWER ===== */}
-//       <AnimatePresence>
-//         {open && (
-//           <>
-//             {/* Dark Overlay */}
-//             <motion.div
-//               initial={{ opacity: 0 }}
-//               animate={{ opacity: 1 }}
-//               exit={{ opacity: 0 }}
-//               className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
-//               onClick={() => setOpen(false)}
-//             />
-
-//             {/* Drawer */}
-//             <motion.div
-//               initial={{ y: "-100%" }}
-//               animate={{ y: 0 }}
-//               exit={{ y: "-100%" }}
-//               transition={{ duration: 0.35, ease: "easeOut" }}
-//               className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-2xl border-b border-white/10"
-//             >
-//               <div className="px-6 pt-24 pb-10 flex flex-col gap-8 text-xl font-semibold text-neutral-300">
-
-//                 <MobileItem href="/" label="Home" close={() => setOpen(false)} />
-
-//                 {navLinks.map((link) => (
-//                   <MobileItem
-//                     key={link.href}
-//                     href={link.href}
-//                     label={link.label}
-//                     close={() => setOpen(false)}
-//                   />
-//                 ))}
-
-//                 <Link
-//                   href="/contact"
-//                   onClick={() => setOpen(false)}
-//                   className="mt-6 px-6 py-4 rounded-full bg-white text-black text-center font-semibold"
-//                 >
-//                   Start a Project
-//                 </Link>
-//               </div>
-//             </motion.div>
-//           </>
-//         )}
-//       </AnimatePresence>
-//     </>
-//   );
-// }
-
-// /* ===== Desktop Nav Item ===== */
-// interface NavItemProps {
-//   label: string;
-//   href: string;
-//   pathname: string;
-// }
-
-// function NavItem({ label, href, pathname }: NavItemProps) {
-//   const active = pathname === href;
-
-//   return (
-//     <Link href={href} className="relative group">
-//       <span
-//         className={`transition-colors ${
-//           active ? "text-white" : "group-hover:text-white"
-//         }`}
-//       >
-//         {label}
-//       </span>
-
-//       <span
-//         className={`absolute -bottom-1 left-0 h-[2px] bg-white transition-all duration-300
-//         ${active ? "w-full" : "w-0 group-hover:w-full"}`}
-//       />
-//     </Link>
-//   );
-// }
-
-
-// /* ===== Mobile Nav Item ===== */
-// interface MobileItemProps {
-//   label: string;
-//   href: string;
-//   close: () => void;
-// }
-
-// function MobileItem({ label, href, close }: MobileItemProps) {
-//   return (
-//     <Link
-//       href={href}
-//       onClick={close}
-//       className="py-3 border-b border-white/10 hover:text-white transition"
-//     >
-//       {label}
-//     </Link>
-//   );
-// }

@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
 
 import Hero from "@/components/home/Hero";
+import StatsStrip from "@/components/home/StatsStrip";
 import Services from "@/components/home/Services";
 import Work from "@/components/home/Work";
+import AIToolsSection from "@/components/home/AIToolsSection";
 import TechStack from "@/components/home/TechStack";
-import Sponsors from "@/components/home/Sponsors";
 import FinalCTA from "@/components/home/FinalCTA";
 
 export const metadata: Metadata = {
-  title: "Build, Learn & Contribute to Real Technology",
+  title: "Silicality — AI Product Lab",
   description:
-    "Silicality is a contribution-first technology ecosystem where developers build real projects, learn AI & web development, and grow through open-source programs and mentorship.",
+    "Silicality partners with founders and teams to design, build, and scale AI-powered digital products. Startup MVPs, AI tools, and web platforms — built fast and precisely.",
   keywords: [
-    "open source platform",
-    "developer ecosystem",
-    "learn open source",
-    "AI and web development",
-    "tech programs for students",
+    "AI product development",
+    "startup MVP",
+    "AI tools platform",
+    "web development agency",
+    "Next.js development",
     "Silicality",
   ],
 };
@@ -25,10 +26,15 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <StatsStrip />
+      <div className="section-divider" />
       <Services />
-      <Work/>
+      <div className="section-divider" />
+      <Work />
+      <AIToolsSection />
+      <div className="section-divider" />
       <TechStack />
-      <Sponsors />
+      <div className="section-divider" />
       <FinalCTA />
     </>
   );
