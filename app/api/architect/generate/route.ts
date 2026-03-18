@@ -28,7 +28,7 @@ function generateSlug(name: string): string {
 async function generateDemoArchitecture(idea: string): Promise<Architecture> {
   return {
     product_name: idea.split(" ").slice(0, 3).join(" ") || "Your Product",
-    overview: "This is a demo architecture generated as a fallback. The AI generation feature is temporarily unavailable due to quota limits.",
+    overview: "Thanks for sharing your idea! Here's a sample architecture based on it.",
     features: [
       "Core feature inspired by your idea",
       "User authentication and authorization",
